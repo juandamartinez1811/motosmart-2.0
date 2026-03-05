@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: motosmart-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: motosmart
+  template:
+    metadata:
+      labels:
+        app: motosmart
+    spec:
+      containers:
+        - name: motosmart
+          image: motosmart:latest
+          ports:
+            - containerPort: 3000
