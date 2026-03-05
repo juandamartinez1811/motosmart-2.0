@@ -12,19 +12,24 @@ class MotoRepository {
     });
   }
 
-  create(moto) {
-    const db = connectDB();
-    return new Promise((resolve, reject) => {
-      db.query(
-        'INSERT INTO motos (marca, modelo, cilindraje) VALUES (?, ?, ?)',
-        [moto.marca, moto.modelo, moto.cilindraje],
-        (err, result) => {
-          if (err) reject(err);
+create(moto) {
+  const db = connectDB();
+  return new Promise((resolve, reject) => {
+    db.query(
+      'INSERT INTO motos (marca, modelo, cilindraje) VALUES (?, ?, ?)',
+      [moto.marca, moto.modelo, moto.cilindraje],
+      (err, result) => {
+        if (err) {
+          console.log("ERROR:", err);
+          reject(err);
+        } else {
+          console.log("INSERT RESULT:", result);
           resolve(result);
         }
-      );
-    });
-  }
+      }
+    );
+  });
+}
 }
 
 module.exports = new MotoRepository();

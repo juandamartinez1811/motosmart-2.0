@@ -5,10 +5,10 @@ let connection;
 function connectDB() {
   if (!connection) {
     connection = mysql.createConnection({
-      host: 'localhost',
-      user: 'root',
-      password: '',
-      database: 'motosmart'
+      host: process.env.DB_HOST || 'localhost',
+      user: process.env.DB_USER || 'root',
+      password: process.env.DB_PASSWORD || '',
+      database: process.env.DB_NAME || 'motosmart'
     });
 
     connection.connect(err => {

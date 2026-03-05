@@ -1,8 +1,11 @@
+Debe tener Node.js 
+__________________________________
+Instalar dependencias
 npm install express mysql2 dotenv
 npm install --save-dev nodemon
 
 __________________________________
-Db
+DB XAMPP
 CREATE DATABASE motosmart;
 
 USE motosmart;
@@ -13,3 +16,10 @@ CREATE TABLE motos (
   modelo VARCHAR(100),
   cilindraje INT
 );
+
+__________________________________
+Para doocker  
+docker-compose up --build
+
+
+docker exec -it motosmart_db mysql -u root -p
